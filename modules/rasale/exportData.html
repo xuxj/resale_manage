@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>销售数据管理</title>
+<script type="text/javascript" src="../../js/common-style.js"></script>
+<style type="text/css" rel="stylesheet">
+.btn-default {
+	color: #333 !important;
+	background-color: #fff !important;
+	border-color: #ccc !important;
+}
+
+.caret {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+}
+
+.m_top {
+	margin-top: 45px;
+}
+
+.file {
+	position: absolute;
+}
+
+.min-w100 {
+	min-width: 100px
+}
+
+.min-w150 {
+	min-width: 150px
+}
+
+.min-w200 {
+	min-width: 200px
+}
+
+.impautosorl {
+	display: block;
+	overflow-x: auto;
+}
+</style>
+<script type="text/javascript" src="../../js/common.js"></script>
+</head>
+<body class="gray-bg" ng-app="exportData" ng-controller="exportData"
+	ng-cloak>
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="ibox float-e-margins">
+
+					<div class="ibox-content p-b-50">
+
+						<form method="post" action="/admin/business_content/exportData">
+							<div class="row">
+								<div class="form-group m-20">
+									<p class="head-btn">
+
+										<label class="col-sm-1 control-label bold">开始日期</label>
+									<div class="col-sm-3">
+										<input readonly="" required="required" style="min-width: 100%"
+											class="layer-date laydate-icon demoicon" name="startDate"
+											id="startDate" onclick="laydate({elem: '#startDate'});">
+									</div>
+
+									<label class="col-sm-1 control-label bold"></label> <label
+										class="col-sm-1 control-label bold">结束日期</label>
+									<div class="col-sm-3">
+										<input readonly="" required="required" style="min-width: 100%"
+											class="layer-date laydate-icon demoicon" name="endDate"
+											id="endDate" onclick="laydate({elem: '#endDate'});">
+									</div>
+
+									<label class="col-sm-1 control-label bold">状态</label>
+									<div class="col-sm-2">
+										<select class="form-control" ng-model="status" name="status"
+											ng-options="p.id as p.status for p in saleStatus">
+										</select>
+									</div>
+
+
+
+									</p>
+
+								</div>
+
+							</div>
+
+							<div class="row">
+								<div class="form-group m-20">
+									<p class="head-btn">
+										<label class="col-sm-1 control-label bold"
+											style="padding-left: 30px;">姓名</label>
+									<div class="col-sm-2">
+										<input type="text" class="form-control" id="name" name="name"
+											ng-model="name" placeholder="" />
+									</div>
+
+									<label class="col-sm-1 control-label bold"
+										style="padding-left: 30px;">门店</label>
+									<div class="col-sm-2">
+										<select class="form-control" ng-model="storeId" name="storeId"
+											ng-options="p.id as p.storeName for p in stores">
+										</select>
+									</div>
+
+									<label class="col-sm-1 control-label bold"
+										style="padding-left: 30px;">手机号</label>
+									<div class="col-sm-2">
+										<input type="text" class="form-control" id="phoneNumber"
+											name="phoneNumber" ng-model="phoneNumber" placeholder="" />
+									</div>
+
+									<div class="col-sm-1">
+										<!-- <label class="col-sm-1 control-label bold"></label> -->
+										<button type="submit" class="btn btn-sm btn-white m-r-10">导出</button>
+									</div>
+									
+									<div class="col-sm-1">
+										<button id="queryBtn" type="button"
+										class="btn btn-sm btn-white m-r-10" ng-click="changeStatus()">查询</button>
+									</div>
+
+
+
+								</div>
+
+							</div>
+						</form>
+
+						<div class="row">
+
+							<div class="form-group m-20">
+
+								<p class="head-btn">
+								
+								<form method="post" enctype="multipart/form-data">
+									<div class="col-sm-3">
+										<input class="file" type="file" id="excelFile"
+											name="excelFile"
+											onchange='angular.element(this).scope().fileChanged(this)' />
+									</div>
+
+									<div class="col-sm-3">
+										<label class="col-sm-1 control-label bold"></label>
+										<button type="button" ng-disabled="enableSubmit"
+											class="btn btn-sm btn-white m-r-10" ng-click="importExcel()">导入</button>
+											
+											<button id="agreeBtn" type="button"
+										class="btn btn-sm btn-white m-r-10" ng-click="approval('1')">通过</button>
+									<button id="disagreeBtn" type="button"
+										class="btn btn-sm btn-white m-r-10" ng-click="approval('2')">不通过</button>
+									</div>
+								</form>
+								</p>
+
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="form-group m-20">
+
+								<table
+									class="table table-hover table-condensed dataTable impautosorl">
+									<thead>
+										<tr>
+											<th class=" col-xs-1" style="min-width: 78px"><input
+												type="checkbox" class="m-r-15" ng-model="allItem">序号</th>
+											<th class="col-xs-1">姓名</th>
+
+											<th class="col-xs-1">门店</th>
+											<th class="col-xs-1">销售时间</th>
+											<th class="col-xs-1">业务内容</th>
+											<th class="col-xs-1">销售机型</th>
+											<th class="col-xs-1">手机号</th>
+											<th class="col-xs-1">奖励</th>
+											<th class="col-xs-1">积分</th>
+											<th class="col-xs-1">状态</th>
+
+
+										</tr>
+									</thead>
+									<tbody class="corpuscle_1">
+										<tr ng-repeat="x in saleList">
+											<td class="col-xs-1 min-w100"><input type="checkbox"
+												ng-checked="allItem" name="saleCheckbox" class="m-r-15"
+												value="{{x.id}}"> {{$index+1}}</td>
+											<td class="col-xs-1 min-w100">{{x.saleName}}</td>
+
+											<td class="col-xs-1 min-w100">{{x.storeName}}</td>
+											<td class="col-xs-1 min-w100">{{x.createTime |
+												date:'yyyy-MM-dd HH:mm:ss'}}</td>
+											<td class="col-xs-1 min-w100">{{x.businessContent}}</td>
+											<td class="col-xs-1 min-w100">{{x.phoneType}}</td>
+											<td class="col-xs-1 min-w100">{{x.phoneNumber}}</td>
+											<td class="col-xs-1 min-w100">{{x.money}}</td>
+											<td class="col-xs-1 min-w100">{{x.score}}</td>
+											<td class="col-xs-1 min-w100">{{x.status==0 ? "待审核" :
+												(x.status==1 ? "通过" : "未通过")}}</td>
+
+										</tr>
+
+									</tbody>
+								</table>
+								<div ng-include="'../public/pagination.html'"></div>
+
+							</div>
+
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="../../js/moduls/rasale/exportData.js"></script>
+	<!--
+	<link rel="stylesheet" type="text/css" href="../../js/syswinplugins/fileuploader/src/stylesheets/syswin.ui.fileuploader.css"/>
+	<script type="text/javascript" src="../../js/syswinplugins/fileuploader/src/syswin.ui.fileuploader.js"></script>
+	-->
+</body>
+</html>

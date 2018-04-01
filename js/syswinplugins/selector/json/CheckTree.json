@@ -1,0 +1,102 @@
+["Empty Folder", {
+                    "id":1,
+                    "text": "Resources",
+                    "state": {
+                        "opened": true
+                    },
+                    "children": [{
+                        "id":2,
+                        "text": "css",
+                        "children": [{
+                                "id":3,
+                                "text": "animate.css",
+                                "icon": "../../../img/position.gif"
+                             },
+                            {
+                                "id":4,
+                                "text": "bootstrap.css",
+                                "icon": "none"
+                            },
+                            {
+                                "id":5,
+                                "text": "main.css",
+                                "icon": "none"
+                            },
+                            {
+                                "id":6,
+                                "text": "style.css",
+                                "icon": "none"
+                            }],
+                        "state": {
+                            "opened": true
+                        }
+                    },
+                        {
+                            "id":20,
+                            "text": "js",
+                            "children": [{
+                                "id":7,
+                                "text": "bootstrap.js",
+                                "icon": "none"
+                            },
+                                {
+                                    "id":8,
+                                    "text": "hplus.min.js",
+                                    "icon": "none"
+                                },
+                                {
+                                    "id":9,
+                                    "text": "jquery.min.js",
+                                    "icon": "none",
+                                    "state":{
+                                        "selected":true
+                                    }
+                                },
+                                {
+                                    "id":10,
+                                    "text": "jsTree.min.js",
+                                    "icon": "none"
+                                },
+                                {
+                                    "id":11,
+                                    "text": "custom.min.js",
+                                    "icon": "none"
+                                }],
+                            "state": {
+                                "opened": true
+                            }
+                        },
+                        {
+                            "id":17,
+                            "text": "html",
+                            "children": [{
+                                "id":12,
+                                "text": "layout.html",
+                                "icon": "none"
+                            },
+                                {
+                                    "id":13,
+                                    "text": "navigation.html",
+                                    "icon": "none"
+                                },
+                                {
+                                    "id":14,
+                                    "text": "navbar.html",
+                                    "icon": "none"
+                                },
+                                {
+                                    "id":15,
+                                    "text": "footer.html",
+                                    "icon": "none"
+                                },
+                                {
+                                    "id":16,
+                                    "text": "sidebar.html",
+                                    "icon": "none"
+                                }],
+                            "state": {
+                                "opened": true
+                            }
+                        }]
+                },
+                    "Fonts", "Images", "Scripts", "Templates" ]

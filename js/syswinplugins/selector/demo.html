@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head><title></title>
+        <meta charset="utf-8"/>
+        <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+        
+        <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="selector/src/stylesheets/hplus.zTree.min.css?v=1.1" rel="stylesheet"/>
+        <!--默认主题link href="//cdn.bootcss.com/jstree/3.3.3/themes/default/style.min.css" rel="stylesheet"-->
+        <script src="//cdn.bootcss.com/jstree/3.3.3/jstree.min.js"></script>
+        
+        <link type="text/css" rel="stylesheet" href="selector/src/stylesheets/syswin.ui.selector.css?v=1.1">
+        <script src="selector/src/syswin.ui.selector.js?v=1.1"></script>
+    </head>
+    <body>
+
+        <table>
+            <tr>
+                <td><input type="text" id="ipt0" name="ipt0"/></td>
+                <td><input type="text" id="ipt1" style="width: 500px;"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="ipt2" style="width: 500px;"/></td>
+                <td><input type="text" id="ipt3" style="width:500px;" key="7,8,9" value="bootstrap.js,hplus.min.js,jquery.min.js"/></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="ipt4"/></td>
+                <td></td>
+            </tr>
+        </table>
+        
+
+        <script type="text/javascript">
+            window.onload = function () {
+
+                var btnEdit0 = $("#ipt0").btnEdit({
+                    url: 'singletreedata',
+                    type: 'singletree',
+                    title: 'Button Edit SingleTree测试',
+                    label: {
+                        title: '普通单选树',
+                        style: 'border:0;width: 100px;',
+                        require: true
+                    },
+                    readonly: true,
+                    initComplete: function () {
+                        console.log('init done.');
+                    },
+                    callback: function (data) {
+                        console.log(data);
+                    }
+                });
+                //console.log('version: ' + btnEdit0.v);
+
+                $("#ipt1").btnEdit({
+                    url: 'checktreedata',
+                    type: 'checktree',
+                    title: 'Button Edit CheckTree测试',
+                    label: {
+                        title: '多选树'
+                    },
+                    callback: function (data) {
+                        console.log(data);
+                    }
+                });
+                
+                $("#ipt2").btnEdit({
+                    url: 'checktreedata',
+                    type: 'checktree',
+                    btn_text: '修改fdsfas',
+                    right_cart: true,
+                    left_search: true,
+                    readonly: true,
+                    dialog_left: 400,
+                    dialog_top: 50,
+                    right_cart_item_icon: 'images/position.gif',
+                    left_title: '<b>选择项目</b>',
+                    right_cart_title: '已选择的项目',
+                    title: 'Button Edit CheckTree测试',
+                    not_add_item: [12],
+                    label: {
+                        title: '选择树列表'
+                    },
+                    prompt: '<b>提示：</b>勾选勾选选勾选勾选勾勾选勾选',
+                    comment: '<span style="color:#FE8C19;"><b>批注：</b>批注批注批注批注批注批注</span>',
+                    callback: function (data) {
+                        console.log(data);
+                    }
+                });
+                
+                $("#ipt3").btnEdit({
+                    url: 'checktreedata',
+                    type: 'checktree',
+                    label: {
+                        title: '给树赋默认值'
+                    },
+                    readonly: true
+                });
+                
+                $("#ipt4").btnEdit({
+                    url: 'singletreedata',
+                    right_cart_url: 'singletreedata?action=r',
+                    type: 'singletree',
+                    right_cart: true,
+                    right_cart_item_icon: 'images/position.gif',
+                    prompt: '测试',
+                    label: {
+                        title: '单选树级联列表'
+                    },
+                    callback: function (data) {
+                        console.log(data);
+                    }
+                });
+
+                
+            };
+        </script>
+    </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>等级管理</title>
+    <script type="text/javascript" src="../../js/common-style.js"></script>
+    <style type="text/css" rel="stylesheet">
+        .btn-default {
+            color: #333 !important;
+            background-color: #fff !important;
+            border-color: #ccc !important;
+        }
+        .caret{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+        }
+      .m_top{
+				margin-top:45px;
+				}
+
+
+    .min-w100{min-width: 100px}
+    .min-w150{min-width: 150px}
+    .min-w200{min-width: 200px}
+    .impautosorl{display: block;overflow-x: auto;}
+    </style>
+    <script type="text/javascript" src="../../js/common.js"></script>
+</head>
+<body class="gray-bg" ng-app="level" ng-controller="level" ng-cloak>
+<div class="wrapper wrapper-content animated fadeInRight" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div   class="ibox float-e-margins">
+
+
+                <div class="ibox-content p-b-50">
+
+
+                    <div class="row">
+                        <div class="form-group m-20">
+                            <p class="head-btn">
+                                <button code="add" type="button" class="btn btn-sm btn-white m-r-10" ng-click="addLevel()" ><a href="javascript:;" style="color:#676a6c" >新增</a></button>
+                                <button code="delete" type="button" class="btn btn-sm btn-white m-r-10" ng-click="deleteLevel()">删除</button>
+                            </p>
+                            <table class="table table-hover table-condensed dataTable impautosorl">
+                                <thead>
+                                <tr>
+                                    <th class=" col-xs-1" style="min-width: 78px"><input type="checkbox" class="m-r-15" ng-model="allItem">序号</th>
+                                    <th class="col-xs-1">等级名称</th>
+                                    <th class="col-xs-1">积分</th>
+                                    <th class="col-xs-1">随机红包最小金额</th>
+                                    <th class="col-xs-1">随机红包最大金额</th>
+                                    <th class="col-xs-1">操作</th>
+           
+                           
+                                </tr>
+                                </thead>
+                                <tbody class="corpuscle_1">
+                                  <tr ng-repeat="x in typeList">
+                                    <td class="col-xs-1 min-w100">
+                                    	<input type="checkbox" ng-checked="allItem" name="levelCheckbox" class="m-r-15" value="{{x.id}}"> {{$index+1}}
+                                    	</td>
+                                    <td class="col-xs-1 min-w100" >{{x.level}}</td>
+                                    <td class="col-xs-1 min-w100" >{{x.score}}</td>
+                                    <td class="col-xs-1 min-w100" >{{x.minMoney}}</td>
+                                    <td class="col-xs-1 min-w100" >{{x.maxMoney}}</td>
+                                    <td class="col-xs-1 min-w100" >
+                                    	<a href="#" class="btn  btn-xs edit " ng-click="updateLevel(x.id,x.level,x.score,x.minMoney,x.maxMoney)">修改</a></td>
+                                    </td>
+                                    
+                                </tr>
+
+                                </tbody>
+                            </table>
+                          	<div ng-include="'../public/pagination.html'"></div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--新增等级-->
+	<div class="ibox float-e-margins hide addOrUpdate-level-html">
+		<div class="ibox-content m-t-20 b-0">
+			<div class="row">
+				<div class="form-horizontal">
+					<div class="form-group m-20">
+
+						<div class="form-group" id="detailCategoryNameDiv">
+							<label class="col-sm-3 control-label bold c-ec4758">等级名称</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									   ng-model="level" required placeholder="" />
+							</div>
+						</div>
+						
+						<div class="form-group" id="detailCategoryNameDiv">
+							<label class="col-sm-3 control-label bold c-ec4758">积分</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									   ng-model="score" required placeholder="" />
+							</div>
+						</div>
+						
+						<div class="form-group" id="detailCategoryNameDiv">
+							<label class="col-sm-3 control-label bold c-ec4758">随机红包最小金额</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									   ng-model="minMoney" required placeholder="" />
+							</div>
+						</div>
+						
+						<div class="form-group" id="detailCategoryNameDiv">
+							<label class="col-sm-3 control-label bold c-ec4758">随机红包最大金额</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control"
+									   ng-model="maxMoney" required placeholder="" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+<script type="text/javascript" src="../../js/moduls/rasale/level.js"></script>
+</body>
+</html>

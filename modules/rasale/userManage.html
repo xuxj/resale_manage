@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户管理</title>
+    <script type="text/javascript" src="../../js/common-style.js"></script>
+    <style type="text/css" rel="stylesheet">
+        .btn-default {
+            color: #333 !important;
+            background-color: #fff !important;
+            border-color: #ccc !important;
+        }
+        .caret{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+        }
+      .m_top{
+				margin-top:45px;
+				}
+
+
+    .min-w100{min-width: 100px}
+    .min-w150{min-width: 150px}
+    .min-w200{min-width: 200px}
+    .impautosorl{display: block;overflow-x: auto;}
+    </style>
+    <script type="text/javascript" src="../../js/common.js"></script>
+</head>
+<body class="gray-bg" ng-app="userManage" ng-controller="userManage" ng-cloak>
+<div class="wrapper wrapper-content animated fadeInRight" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div   class="ibox float-e-margins">
+
+
+                <div class="ibox-content p-b-50">
+                	
+                	<div class="row">
+                        <div class="form-group m-20">
+                            <p class="head-btn">
+                            	
+                            	<form method="get" action="/admin/user_info/exportData">
+                            		
+																
+																<div class="col-sm-2">
+																	<label class="col-sm-1 control-label bold"></label>
+																	<button type="submit" class="btn btn-sm btn-white m-r-10">导出</button>
+																</div>
+															</form>
+															
+															
+															
+																<div class="col-sm-3">
+																	<input class="file" type="file" id="excelFile" name="excelFile" onchange='angular.element(this).scope().fileChanged(this)' />
+																</div>
+																
+																<div class="col-sm-3">
+																	<label class="col-sm-1 control-label bold"></label>
+																	<button type="button" ng-disabled="enableSubmit" class="btn btn-sm btn-white m-r-10" ng-click="importExcel()">导入</button>
+																</div>
+															
+                            </p>
+                          	
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="form-group m-20">
+                        	
+                        	  <p class="head-btn">
+                            		<label class="col-sm-1 control-label bold">状态</label>
+								
+																<div class="col-sm-2">
+																	<select class="form-control" ng-model="status" ng-options="p.id as p.status for p in userStatus" ng-change="changeStatus()">
+																	</select>
+																</div>
+                            	
+                            </p>
+                            
+                            
+                            <table class="table table-hover table-condensed dataTable impautosorl">
+                                <thead>
+                                <tr>
+                                    <th class="col-xs-1">姓名</th>
+                                    <th class="col-xs-1">联系方式</th>
+                                    <th class="col-xs-1">身份证号</th>
+                                    <th class="col-xs-1">昵称</th>
+                                    <th class="col-xs-1">所属支局</th>
+                                    <th class="col-xs-1">所属门店</th>
+                                    <th class="col-xs-1">等级</th>
+                                    <th class="col-xs-1">积分</th>
+                                    
+                                    <th class="col-xs-1">状态</th>
+                                    <th class="col-xs-1">操作</th>
+           
+                           
+                                </tr>
+                                </thead>
+                                <tbody class="corpuscle_1">
+                                  <tr ng-repeat="x in userList">
+                                    <td class="col-xs-1" >{{x.name}}</td>
+                                    <td class="col-xs-1" >{{x.phoneNumber}}</td>
+                                    <td class="col-xs-1" >{{x.certNo}}</td>
+                                    <td class="col-xs-1" >{{x.nickName}}</td>
+                                    <td class="col-xs-1" >{{x.substationName}}</td>
+                                    <td class="col-xs-1" >{{x.storeName}}</td>
+                                    <td class="col-xs-1" >{{x.level}}</td>
+                                    <td class="col-xs-1">{{x.score}}</td>
+                                    
+                                    <td class="col-xs-1">{{x.status == 0 ? '待审核' : (x.status == 1 ? '通过' : '未通过')}}</td>
+                                    <td class="col-xs-1" >
+                                     
+                                    	<a href="#" ng-if="x.status == 2" class="btn  btn-xs edit " ng-click="approve(x.id,'1')">通过</a>
+                                    	
+                                    	<a href="#" ng-if="x.status == 2" class="btn  btn-xs edit " ng-click="approve(x.id,'3')">删除</a>
+                                    	
+                                    	<a href="#" ng-if="x.status == 1" class="btn  btn-xs edit " ng-click="approve(x.id,'2')">不通过</a>
+                                    	
+                                    	<a href="#" ng-if="x.status == 0" class="btn  btn-xs edit " ng-click="approve(x.id,'1')">通过</a>
+                                    	
+                                    	<a href="#" ng-if="x.status == 0" class="btn  btn-xs edit " ng-click="approve(x.id,'2')">不通过</a>
+                                    	
+                                    	<a href="#" class="btn  btn-xs edit " ng-click="approve(x.id,'3')">删除</a>
+                                    </td>
+                                    
+                                </tr>
+
+                                </tbody>
+                            </table>
+                          	<div ng-include="'../public/pagination.html'"></div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="../../js/moduls/rasale/userManage.js"></script>
+</body>
+</html>

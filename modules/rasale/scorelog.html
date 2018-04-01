@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红包记录</title>
+    <script type="text/javascript" src="../../js/common-style.js"></script>
+    <style type="text/css" rel="stylesheet">
+        .btn-default {
+            color: #333 !important;
+            background-color: #fff !important;
+            border-color: #ccc !important;
+        }
+        .caret{
+            position: absolute;
+            top: 15px;
+            right: 10px;
+        }
+      .m_top{
+				margin-top:45px;
+				}
+
+
+    .min-w100{min-width: 100px}
+    .min-w150{min-width: 150px}
+    .min-w200{min-width: 200px}
+    .impautosorl{display: block;overflow-x: auto;}
+    </style>
+    <script type="text/javascript" src="../../js/common.js"></script>
+</head>
+<body class="gray-bg" ng-app="scoreLog" ng-controller="scoreLog" ng-cloak>
+<div class="wrapper wrapper-content animated fadeInRight" >
+    <div class="row">
+        <div class="col-xs-12">
+            <div   class="ibox float-e-margins">
+
+
+                <div class="ibox-content p-b-50">
+
+
+                    <div class="row">
+                        <div class="form-group m-20">
+                        	
+                        	  <p class="head-btn">
+                            		<label class="col-sm-1 bold">开始日期</label>
+																<div class="col-sm-2">
+																	<input readonly="" required="required" style="min-width: 100%;" class="layer-date laydate-icon demoicon" name="startDate"  id="startDate" onclick="laydate({elem: '#startDate'});">
+																</div>
+																
+																<label class="col-sm-1 control-label bold" style="padding-left:30px;">结束日期</label>
+																<div class="col-sm-2">
+																	<input readonly="" required="required" style="min-width: 100%" class="layer-date laydate-icon demoicon" name="endDate"  id="endDate" onclick="laydate({elem: '#endDate'});">
+																</div>
+																
+																
+																<label class="col-sm-1 control-label bold" style="padding-left:30px;">姓名</label>
+																<div class="col-sm-2">
+																	<input type="text" class="form-control" id="name" ng-model="name" placeholder="" />
+																</div>
+																
+																<div class="col-sm-2">
+																	<button class="btn btn-sm btn-white m-r-10" ng-click="pageData({'pageNum':'1','pageSize':'10'})">查询</button>
+																</div>
+                            	
+                            </p>
+                            
+                            
+                            <table class="table table-hover table-condensed dataTable impautosorl">
+                                <thead>
+                                <tr>
+                                    <th class="col-xs-1">姓名</th>
+                                    <th class="col-xs-1">微信昵称</th>
+                                    <th class="col-xs-1">时间</th>
+                                    <th class="col-xs-1">积分</th>
+           
+                           
+                                </tr>
+                                </thead>
+                                <tbody class="corpuscle_1">
+                                  <tr ng-repeat="x in scoreList">
+                                    <td class="col-xs-1 min-w100" >{{x.name}}</td>
+                                    <td class="col-xs-1 min-w100" >{{x.nickName}}</td>
+                                    <td class="col-xs-1 min-w100" >{{x.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                    <td class="col-xs-1 min-w100" >{{x.score}}</td>
+                                    
+                                </tr>
+
+                                </tbody>
+                            </table>
+                          	<div ng-include="'../public/pagination.html'"></div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="../../js/moduls/rasale/scoreLog.js"></script>
+</body>
+</html>

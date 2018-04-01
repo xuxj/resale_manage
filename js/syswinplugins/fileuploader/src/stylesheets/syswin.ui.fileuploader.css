@@ -1,0 +1,75 @@
+.fileListCon ul {
+	margin: 10px;
+}
+
+.fileListCon ul>li {
+	list-style-type: none;
+	float: left;
+	margin: 0 10px;
+	padding: 5px;
+	position: relative;
+}
+
+.fileListCon ul>li span {
+	position: absolute;
+	right: -5px;
+	top: -5px;
+}
+
+.fileListCon ul>li span:hover {
+	cursor: pointer;
+}
+
+.fileListCon {
+	font-size: 14px;
+}
+
+.attNumber {
+	width: 50px;
+}
+
+.aupload {
+	padding: 2px 10px;
+	height: 28px;
+	line-height: 20px;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	cursor: pointer;
+	color: #888;
+	background: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	text-decoration: none;
+}
+
+.aupload input {
+	position: absolute;
+	right: 0;
+	top: 0;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	cursor: pointer;
+}
+
+.aupload:hover {
+	color: #444;
+	background: #eee;
+	border-color: #ccc;
+	text-decoration: none;
+}
+
+.fileToolBar p {
+	margin-left: 20px;
+	margin-top: 10px;
+	color: red;
+}
+.fileListCon input[readonly] {
+	border: 0;
+}
+
+

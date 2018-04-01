@@ -1,0 +1,13 @@
+/*!
+ * 
+ * SpreadJS Library 10.0.0
+ * 
+ * Copyright(c) GrapeCity, Inc.  All rights reserved.
+ * 
+ * Licensed under the SpreadJS Commercial License.
+ * spread.sales@grapecity.com
+ * http://spread.grapecity.com/Pages/Spread-JS-License/
+ * 
+ * 
+ */
+.gc-gantt,.gc-ganttHeader{border-left:2px solid #ddd}.gc-gantt-border{fill:none;stroke:#d8d8d8;stroke-width:1}.gc-gantt-item-text{fill:#fff}.gc-gantt-item:after{content:'<rect></rect>'}.gc-gantt-item-parent{fill:#7be0f5;stroke:#41a3dd}.gc-gantt-parent-percentComplete{fill:#41a3dd}.gc-gantt-item-child{fill:#f5d06a;stroke:#cd9900}.gc-gantt-child-percentComplete{fill:#cd9900}.gc-gantt-item-stamp{fill:#f58c67;stroke:#c24032}.gc-gantt-arrow-line{fill:none;stroke:#2186e2;stroke-width:1}.gc-gantt-arrow-line:hover{stroke-width:3}.gc-gantt-arrow-head{fill:#2186e2}.gc-gantt-resize-indicator{stroke:#7f7f7f;stroke-width:3;stroke-dasharray:3,3}.gc-gantt-connect-indicator{fill:#dbdbdb;stroke:#8d8d8d;stroke-width:3}.gc-gantt-connect-line{stroke:#7f7f7f;stroke-width:1;stroke-dasharray:3,3}.gc-gantt-emboss{stroke:#a1a1a1;stroke-width:3;stroke-linecap:round}

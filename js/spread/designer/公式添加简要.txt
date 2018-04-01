@@ -1,0 +1,16 @@
+
+common/resources.cn.js
+cn_res.categories           在分类数组中添加分类       
+cn_res.insertFunctionDialog    设置函数分类名称
+
+formatDialog/formatDialog.html     插入函数对话框，添加函数分类的HTML代码
+
+
+dialogs/dialogs.js
+InsertFunctionDialog.prototype._init     设置分类的函数
+InsertFunctionDialog.prototype._initOptions   确定点击事件
+this._allNames = this._allNames.concat(    在这里为分类改变事件注册函数项
+list.dblclick(function (evt) {     公式双击事件
+
+
+resources/FormulaBar_FunctionInformation.zh_CN.xml              函数及函数参数描述
